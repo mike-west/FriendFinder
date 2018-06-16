@@ -2,7 +2,7 @@
   "name": "friendfinder",
   "version": "1.0.0",
   "description": "Find a friend",
-  "main": "index.js",
+  "main": "./app/friendfinder.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "v8.11.1"
   }
 }
