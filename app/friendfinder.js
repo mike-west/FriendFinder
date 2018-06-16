@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 
 // with express set up, load the routes
 // =============================================================
-require("./routing/htmlRoutes")(app);
 require("./routing/apiRoutes")(app);
+require("./routing/htmlRoutes")(app);
 
 // object constructors
 // TODO use this to constsruct new user, may move it to separate file
