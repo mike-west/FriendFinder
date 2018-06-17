@@ -18,18 +18,6 @@ app.use(bodyParser.json());
 require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes")(app);
 
-// object constructors
-// TODO use this to constsruct new user, may move it to separate file
-// function User(name, link, scores) {
-
-//     this.name = name;
-//     this.link = link;
-//     this.scores = scores;
-// }
-
-// var user = new User("Mike", "link", [1,2,3,4,5,6,7,8,9,0]);
-// console.log(user)
-
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });
