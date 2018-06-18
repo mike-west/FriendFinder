@@ -193,7 +193,7 @@
                 </div>
                 <div class="modal-body">
                     <h2 id="match-name"></h2>
-                    <h2 id="match-img"></h2>
+                    <img id="match-img"></img>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -252,7 +252,7 @@
                     console.log(data);
                     // Put the  result from the AJAX post in the modal box
                     $("#match-name").text(data.userName);
-                    $("#match-img").text("data.photoLink);
+                    $("#match-img").attr("src", data.photoLink);
 
                     console.log("about to display modal");
                     // Show the modal with the best match

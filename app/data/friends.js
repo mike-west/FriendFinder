@@ -8,7 +8,7 @@ var friendArr = [
     },
     {
         userName: "Deborah",
-        photoLink: "https://fineartamerica.com/featured/the-king-and-i-deborah-kerr-1956-everett.html",
+        photoLink: "https://www.femalefirst.co.uk/image-library/square/250/d/deborah-kerr.jpg",
         scores: ["4", "5", "4", "3", "4", "1", "4", "1", "1", "1"]
     }
 ];
