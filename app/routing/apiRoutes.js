@@ -23,8 +23,6 @@ module.exports = function (app) {
                 alreadyThere = false;
             }
 
-            console.log(user.userName + " " + friend.userName + " " + alreadyThere);
-
             friendScore = totalScore(friend.scores);
             // the smallest difference between scores is the best match
             var diff = Math.abs(userScore - friendScore);
