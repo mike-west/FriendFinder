@@ -29,8 +29,8 @@
         <h4>Name (Required)</h4>
         <input type="text" id="name" class="form-control" required>
 
-        <h4>Social Media Link (Required)</h4>
-        <input type="text" id="socialMedia" class="form-control" required>
+        <h4>Link to Photo (Required)</h4>
+        <input type="text" id="photoLink" class="form-control" required>
 
         <hr>
 
@@ -193,7 +193,7 @@
                 </div>
                 <div class="modal-body">
                     <h2 id="match-name"></h2>
-                    <h2 id="match-link"></h2>
+                    <h2 id="match-img"></h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -230,7 +230,7 @@
                 // Create an object for the user"s data
                 var friendData = {
                     userName: $("#name").val(),
-                    socialMedia: $("#socialMedia").val(),
+                    photoLink: $("#photoLink").val(),
                     scores: [
                         $("#q1").val(),
                         $("#q2").val(),
@@ -246,12 +246,15 @@
                 };
 
                 // AJAX post the data to the friends API.
-                $.post("/api/friends", friendData, function (data) {
+                $.post("/api/friends", friendData, function (data, status) {
+                    console.log("status: " + status);
+                    console.log("data back");
+                    console.log(data);
+                    // Put the  result from the AJAX post in the modal box
+                    $("#match-name").text(data.userName);
+                    $("#match-img").attr("src", data.photoLink);
 
-                    // Grab the result from the AJAX post so that the best match's name and Social Media are displayed.
-                    $("#match-name").text(data.name);
-                    $("#match-img").attr("src", data.photo);
-
+                    console.log("about to display modal");
                     // Show the modal with the best match
                     $("#results-modal").modal("toggle");
 

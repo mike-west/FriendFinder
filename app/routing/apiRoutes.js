@@ -5,6 +5,7 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res) {
         var match = req.body;
         var user = req.body;
+        console.log(user);
         var alreadyThere = false;
         var userScore = 0;
         var closestDiff = 90;
@@ -21,9 +22,9 @@ module.exports = function (app) {
             friendScore = totalScore(friend.scores);
             // the smallest difference between scores is the best match
             var diff = Math.abs(userScore - friendScore);
-            console.log("user score: " + userScore + 
-                        " friendScore: " + friendScore +
-                        " diff: " + diff + " closests diff: " + closestDiff);
+            console.log("user score: " + userScore +
+                " friendScore: " + friendScore +
+                " diff: " + diff + " closests diff: " + closestDiff);
             if (diff < closestDiff) {
                 // best match so far
                 closestMatch = friend;
@@ -31,31 +32,30 @@ module.exports = function (app) {
                 console.log(friend);
                 closestDiff = diff;
             }
+
+            // append this person to the array if they aren't already there.
+            if (!alreadyThere) {
+                console.log("pushing");
+                console.log(user);
+                friendArr.push(user);
+            }
+
         });
-
-        
-        // append this person to the array if they aren't already there.
-        if (!alreadyThere) {
-            console.log("pushing");
-            console.log(user);
-            friendArr.push(user);
-        }
-
         // console.log(closestMatch);
 
         // return the match
         console.log("returning");
         console.log(closestMatch);
-        res.json(closestMatch);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(closestMatch));
     });
 
     app.get("/api/friends", function (req, res) {
-        // TODO echoing the data back for now, add logic to update the table
         res.json(friendArr);
     });
 };
 
-function totalScore (scores) {
+function totalScore(scores) {
     var totalScore = 0;
 
     scores.forEach(score => {
